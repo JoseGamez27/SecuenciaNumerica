@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecuenciaNumerica.Views.InicioView"
+             Title="">
+    <VerticalStackLayout BackgroundColor="LightCoral" Spacing="10">
+        <Frame BackgroundColor="Orange" Padding="24" CornerRadius="10">
+            <Label Text="Adivina la Secuencia" HorizontalTextAlignment="Center" TextColor="DarkBlue" FontSize="40"
+               FontFamily="bold" FontAttributes="Italic"/>
+        </Frame>
+        <Image MaximumHeightRequest="300" Source="https://static.vecteezy.com/system/resources/previews/003/546/353/original/child-at-his-desk-solving-a-math-problem-free-vector.jpg"></Image>
+        <Button Command="{Binding IniciarJuegoCommand}" Text="Iniciar Juego" TextColor="DarkBlue" BackgroundColor="Orange" FontAttributes="Italic" FontSize="40" HorizontalOptions="Center"
+            Padding="30,10,30,10"/>
+    </VerticalStackLayout>
+
+</ContentPage>

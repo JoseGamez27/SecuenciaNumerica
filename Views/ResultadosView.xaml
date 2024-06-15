@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecuenciaNumerica.Views.ResultadosView"
+             Title=""
+             BackgroundImageSource="https://img.freepik.com/premium-vector/asphalt-road-going-through-hill-with-beautiful-nature-landscape-trees-mountain_288411-1741.jpg?w=1060">
+    <VerticalStackLayout Background="LightCoral">
+        <Label Text="Resultados del Juego" TextColor="Orange" FontSize="40" FontAttributes="Italic,Bold" BackgroundColor="DarkBlue" HorizontalTextAlignment="Center"/>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" WidthRequest="250" Padding="20" Margin="20">
+                <Label FontSize="40" TextColor="Aqua" Text="{Binding Aciertos, StringFormat='Aciertos: {0}'}" FontAttributes="Italic,Bold" Margin="0,0,0,10"></Label>
+                <Label FontSize="40" TextColor="Aqua" Text="{Binding Errores, StringFormat='Errores: {0}'}" FontAttributes="Italic,Bold"></Label>
+            </StackLayout>
+        </StackLayout>
+        <Label FontSize="50" HorizontalTextAlignment="Center" TextColor="Yellow" Margin="20" FontAttributes="Bold,Italic">
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Setter Property="Text" Value="!FELICIDADESSS. HAS GANADO¡"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding Errores}" Value="3">
+                            <Setter Property="Text" Value="Has perdido. ¡Sigue intentandoló!"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+        <Button Command="{Binding VolverInicioCommand}" VerticalOptions="CenterAndExpand" BackgroundColor="DarkBlue" TextColor="Orange" Text="Volver a Inicio"
+            FontAttributes="Italic,Bold" FontSize="36" HorizontalOptions="Center" Padding="30,10,30,10"/>
+    </VerticalStackLayout>
+</ContentPage>

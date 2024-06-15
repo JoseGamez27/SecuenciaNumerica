@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecuenciaNumerica.Views.JuegoView"
+             Title="¡ADIVINA LA SECUENCIA!">
+    <VerticalStackLayout>
+        <VerticalStackLayout>
+            <VerticalStackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="Black"></Setter>
+                    <Setter Property="FontSize" Value="25"></Setter>
+                    <Setter Property="FontAttributes" Value="Italic"></Setter>
+                    <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextColor" Value="White"></Setter>
+                    <Setter Property="FontSize" Value="30"></Setter>
+                    <Setter Property="BackgroundColor" Value="DarkBlue"></Setter>
+                    <Setter Property="Margin" Value="10"></Setter>
+                </Style>
+                <!--<Style TargetType="Image">
+                    <Setter Property="Source" Value="https://th.bing.com/th/id/OIP.HO71nM9-31fy4Elk21UQEQHaD5?rs=1&pid=ImgDetMain"></Setter>
+                </Style>-->
+            </VerticalStackLayout.Resources>
+            <Frame BorderColor="White" Margin="10" BackgroundColor="LightCoral">
+                <StackLayout>
+                    <StackLayout HorizontalOptions="Center" WidthRequest="290">
+                        <Label Text="{Binding SecuenciaMostrar}"></Label>
+                        <Label></Label>
+                        <Label Text="{Binding Incremento, StringFormat='Incremento de: {0}'}" TextColor="White" Background="DarkBlue" Margin="5"></Label>
+                        <StackLayout Orientation="Horizontal" Margin="5,20,5,5">
+                            <Label Text="Aciertos:" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Binding Aciertos}" Margin="0,0,50,0"></Label>
+                            <Label ></Label>
+                            <Label Text="Errores:" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Binding Errores}"></Label>
+                        </StackLayout>
+                        <Label HeightRequest="5" Background="White"></Label>
+                        <StackLayout Orientation="Horizontal" Margin="5,20,5,5">
+                            <Label Text="Valor 1:" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                            <Entry FontSize="22" TextColor="Black" Text="{Binding Respuesta1}" HorizontalTextAlignment="Center" Keyboard="Numeric"></Entry>
+                            <Label Text="Valor 2:" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                            <Entry FontSize="22" TextColor="Black" Text="{Binding Respuesta2}" HorizontalTextAlignment="Center" Keyboard="Numeric"></Entry>
+                        </StackLayout>
+                        <Button Command="{Binding VerificarRespuestaCommand}" Text="Verificar"></Button>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
