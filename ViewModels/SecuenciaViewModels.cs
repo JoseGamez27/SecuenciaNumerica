@@ -17,9 +17,9 @@ namespace SecuenciaNumerica.ViewModels
         public string SecuenciaMostrar { get; set; } = "";
         public string Incremento { get; set; } = "";
         private int NumAdivinar1 { get; set; }
-        public int Respuesta1 { get; set; } = 0;   
+        public int Respuesta1 { get; set; }  
         private int NumAdivinar2 { get; set; }
-        public int Respuesta2 { get; set; } = 0;
+        public int Respuesta2 { get; set; }
 
         public ICommand IniciarJuegoCommand {  get; set; }
         public ICommand VerificarRespuestaCommand { get; set; }
@@ -27,6 +27,8 @@ namespace SecuenciaNumerica.ViewModels
         Random r = new();
         public SecuenciaViewModels()
         {
+            Respuesta1 = 0;
+            Respuesta2 = 0;
             GenerarSecuencia();
             IniciarJuegoCommand = new Command(IniciarJuego);
             VerificarRespuestaCommand = new Command(VerificarRespuesta);
@@ -56,13 +58,14 @@ namespace SecuenciaNumerica.ViewModels
             }
             int indice1 = r.Next(0, secuencia.Length - 1);
             NumAdivinar1 = secuencia[indice1];
-            int indice2 = r.Next(0, secuencia.Length);
+            int indice2 = r.Next(0, secuencia.Length - 1);
             NumAdivinar2 = secuencia[indice2];
 
-            while ((indice1 == indice2) && indice1 > indice2) 
+            while ((indice1 == indice2) || (indice1 > indice2)) 
             {
                 indice2 = r.Next(0, secuencia.Length);
             }
+            NumAdivinar2 = secuencia[indice2];
             Secuencia = secuencia;
 
             string[] secuenciaclon = new string[longitudsecuencia];
@@ -95,6 +98,8 @@ namespace SecuenciaNumerica.ViewModels
                     Shell.Current.GoToAsync("//resultados");
                 }
             }
+            Respuesta1 = 0;
+            Respuesta2 = 0;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
         }
         void VolverInicio()
